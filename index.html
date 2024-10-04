@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+    <form id="form1">
+        <label for="name">NAME:</label>
+        <input id="name" type="text"><br>
+        <label for="email">E-MAIL:</label>
+        <input id="email" type="email"><br>
+        <label for="mbl">CONTACT-no:</label>
+        <input id="mbl" type="tel"><br>
+        <input type="submit">
+    
+
+    </form>
+    
+    </pre>
+    <p id="p1"></p>
+        <p id="p2"></p>
+        <p id="p3"></p>
+    <script>
+        
+    //     let localStorage1={
+    //         key1:"santu",
+    //         key2:"riya",
+    //         key3:"santhu",
+    //         key:{
+    //         key4:"dolittle",
+    //         key5:"bearbrother",
+    //         key6:"shinchan"
+    //     }
+    // }
+    //     console.log(localStorage1.key1)
+
+        
+        let form=document.getElementById("form1")
+        let ip1=document.getElementById("name")
+        let ip2=document.getElementById("email")
+        let ip3=document.getElementById("mbl")
+        let p1=document.getElementById("p1")
+        let p2=document.getElementById("p2")
+        let p3=document.getElementById("p3")
+        form.addEventListener("submit",(e)=>{
+            e.preventDefault();
+            localStorage.setItem("name",ip1.value)
+            localStorage.setItem("email",ip2.value)
+            localStorage.setItem("mobile",ip3.value)
+            displaydata()
+            
+            function displaydata(){
+            let storeddata1=localStorage.getItem("name")
+            let storeddata2=localStorage.getItem("email")
+            let storeddata3=localStorage.getItem("mobile")
+            let data={
+                name:ip1.value,
+                email:ip2.value,
+                mobile:ip3.value
+            };
+                if(storeddata1){
+                    p1.textContent="NAME:"+data.name;
+                }
+                if(storeddata2){
+                    p2.textContent="E-MAIL:"+data.email;
+                }
+                if(storeddata3){
+                    p3.textContent="CONTAC-no:"+data.mobile;
+                }
+
+            }
+           window.onload=displaydata;
+        //    displaydata()
+        })
+    </script>
+</body>
+</html>
